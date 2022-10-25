@@ -1,0 +1,13 @@
+$onyx: #393d3f; 
+$white:#E9ECEF;
+$silver:#C6C5B9;
+$steel-teal:#62929E;
+$dark-electric-blue:#546A7B;
+
+.App {
+    background-color: $white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+}

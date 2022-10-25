@@ -1,0 +1,27 @@
+$onyx: #393d3f; 
+$white:#E9ECEF;
+$silver:#C6C5B9;
+$steel-teal:#62929E;
+$dark-electric-blue:#546A7B;
+
+.Header {
+    padding: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    & img { 
+        max-width: 3rem;
+        max-height: 3rem;
+        min-height: 1.5rem;
+        min-width: 1.5rem;
+        margin-right: 1rem;
+    }
+    & h1 {
+        margin: 0;
+        font-size: 1rem;
+    }
+}
+
+
+

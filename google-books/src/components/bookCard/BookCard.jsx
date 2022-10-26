@@ -1,11 +1,8 @@
 import style from "./BookCard.module.scss"
-const BookCard = () => {
+const BookCard = (book) => {
     return (
         <div className={style.BookCard}>
-            <img src="/"></img>
-            <p>author</p>
-            <p>title</p>
-            <p>description</p>
+            <p>test</p>
         </div>
     )
 }

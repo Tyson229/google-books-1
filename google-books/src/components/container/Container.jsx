@@ -1,4 +1,4 @@
-import BookCard from "../bookCard/BookCard"
+import BookCard from "../bookCard/BookCard.jsx"
 import style from "./Container.module.scss"
 import getBooks from "../../services/books.js"
 import { useState } from "react"
@@ -11,29 +11,19 @@ const Container = ({query}) => {
     
     // Pass the term to books to get back the result
     useEffect(() => {
-        getBooks(query).then((books) => setResults(books.items)) ;
-        console.log(results)
-    }, [query])
+        getBooks(query).then((books) => {setResults(books)}) ;
+    }, [query]);
     // Display the result 
 
     return (
         <div className={style.Container}>
-            {/* {results.map((element) => (
-                <BookCard book={element}/> 
-            ))} */}
-
-            {
-                results ? (
-                    results.map(() => {
-                        <BookCard/>
-                    })
-                )
-               
-                :
-                <h2>Nothing</h2>
-            }
+        {
+            results && results.map((book) => {
+               return <BookCard key={book.id} result={book} />
+            })
+        }            
         </div>
-    );
+    )
 };
 
 export default  Container

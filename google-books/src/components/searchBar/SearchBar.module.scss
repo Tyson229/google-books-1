@@ -1,53 +1,73 @@
-$onyx: #393d3f; 
-$white:#E9ECEF;
-$silver:#C6C5B9;
-$steel-teal:#62929E;
-$dark-electric-blue:#546A7B;
+@use '../../modules/mixins';
+@use '../../modules/ColorPalette';
+@use '../../modules/variable';
 
 .SearchBar {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 3.5rem 0;
-    @media screen and (max-width: 767px) {
-        width: 20rem; 
-    }
-    @media screen and (min-width: 768px) {
-        width: 35rem; 
-    }
-    &:focus {
-        
-    }
-   
-    & input {
-        border: none;
+    // Set as flex
+    @include mixins.Flexbox_Center;
+
+    //Set sizing
+    width: 100%;
+    height: 15vh;
+
+    &Content {
+        // Set as flex
+        @include mixins.Flexbox_Center;
+        border-radius: 40px;
         width: 80%;
-        height: 3rem;
-        border-radius: 5px 0 0 5px;
-        padding:0 0.5rem;
-        font-size: 1.2rem;
-        // padding: 0.5rem; 
-        &:focus {
+        max-width: 700px;
+        height: 50%;
+        //border: 1px solid ColorPalette.$dark;
+        padding: 0 10px;
+        background-color: white;
+        
+        &:focus-within {
+            box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+            transition: all .25s ease-in-out; 
+            background-color: #2093d5;
+            
+        }
+        &Input {
+            @include mixins.Flexbox_Center;
+
+            background: transparent;
+            padding: 0 10px;
+            width: 90%;
+            //height: 95%;
             outline: none;
-            &::placeholder {
-                color: transparent;
+            border: none;
+            transition: all .25s ease-in-out; 
+            &:focus {
+                &::-webkit-input-placeholder {
+                    color: transparent;
+                    -webkit-transition: color 0.2s ease;
+                    transition: all .25s ease-in-out; 
+                }
+               font-size: 1.4em;
+               color: white;
+            }
+
+            &:focus + button {
+                transition: all .25s ease-in-out; 
+               font-size: 1.2em;
+            }
+            
+            
+        }
+    
+        &Button {
+            @include mixins.Flexbox_Center;
+            background: transparent;
+            box-sizing: border-box;
+            border: none;
+        
+            & img {
+                width: variable.$mini;
+                height: variable.$mini;
             }
         }
-        
     }
 
-    & button {
-        background-color: $steel-teal;
-        color: white;
-        border-radius: 0 5px 5px 0;
-        width: 20%;
-        height: 3rem;
-        margin-left: auto;
-        border: none;
-
-        &:active{
-            background-color: $dark-electric-blue;
-            color: white;
-        }
-    }
+    /* Set style for children */
+    
 }

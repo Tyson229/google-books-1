@@ -1,9 +1,20 @@
+@use '../../modules/ColorPalette' as Color; 
+@use '../../modules/variable';
+@use '../../modules/mixins';
+
+
 .Container {
-    width: 80%;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
+    @include mixins.Flexbox_BoxSizing;
     flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: center;
+    width: 100%;
+    //max-width: 1280px;
     
-    background-color: red;
+}
+.Empty {
+    height: 100%;
+    width: 100%;
+    margin: 15em;
+    text-align: center;
 }

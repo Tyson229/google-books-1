@@ -3,6 +3,7 @@ import style from "./Container.module.scss"
 import getBooks from "../../services/books.js"
 import { useState } from "react"
 import { useEffect } from "react"
+import BookModal from "../bookModal/BookModal.jsx"
 
 
 const Container = ({query}) => {
@@ -15,15 +16,22 @@ const Container = ({query}) => {
     }, [query]);
     // Display the result 
 
-    return (
-        <div className={style.Container}>
-        {
-            results && results.map((book) => {
-               return <BookCard key={book.id} result={book} />
-            })
-        }            
-        </div>
-    )
+    if(results.length){
+        return (
+            <div className={style.Container}>
+            {
+                results.map((book) => {
+                    return  <BookCard key={book.id}  result={book} />})        
+            }           
+            </div>
+        )
+    } else {
+        return (
+            <div className={style.Empty}>
+                <p>Let's search some book</p>
+            </div>
+        )
+    }
 };
 
 export default  Container

@@ -1,16 +1,12 @@
-$onyx: #393d3f; 
-$white:#E9ECEF;
-$silver:#C6C5B9;
-$steel-teal:#62929E;
-$dark-electric-blue:#546A7B;
+@use './modules/ColorPalette' as Color; 
+@use './modules/variable';
+@use './modules/mixins';
+
 
 .App {
-    background-color: $white;
     display: flex;
     flex-direction: column;
     align-items: center;
-    //height: 100vh;
-    height: 100vh;
-    max-height: fit-content;
-    max-width: 100%;
+    background-color: Color.$silver;
+
 }

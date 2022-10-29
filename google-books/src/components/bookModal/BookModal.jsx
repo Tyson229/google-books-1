@@ -10,7 +10,7 @@ const BookModal = ({book, closeModal}) => {
         <div className={style.BookModal}>
             {/* Close Button */}
             <div className={style.BookModalNav}>
-                <butto className={style.BookModalNav_button} onClick={onClickCloseModal}>&times;</butto>
+                <p className={style.BookModalNav_button} onClick={onClickCloseModal}>&times;</p>
             </div>
 
             {/** Books details */}
@@ -26,7 +26,9 @@ const BookModal = ({book, closeModal}) => {
                     </p>
                     
                     <p className={style.BookModalContainerInfo_authors}>
-                        {book.volumeInfo.authors.join(', ')}
+                        {() => {
+                                return book.volumeInfo.authors && book.volumeInfo.authors.join(', ')
+                            }}
                     </p>
                     
                     <div className={style.BookModalContainerInfo_item}>

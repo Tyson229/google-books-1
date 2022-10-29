@@ -5,40 +5,25 @@ const BookCard = ({result, handle, setOpenModal}) => {
         handle(result);
         setOpenModal(true);
     }
-    try{
-        return (
-            <div onClick={onClickBookCard} className={style.BookCard}>
-                <div className={style.BookCardImage}>
-                    <img  src={result.volumeInfo.imageLinks.smallThumbnail}/>
-                </div>
-                
-                <div className={style.BookCardDetails}>
-                    <p className={style.BookCardDetails_title}>{result.volumeInfo.title}</p>
 
-                    <p className={style.BookCardDetails_authors}>{result.volumeInfo.authors.join(", ")}</p>
-                    
-                    <p className={style.BookCardDetails_description}>{result.volumeInfo.description}</p>
-                </div>
-                
+    return (
+        <div onClick={onClickBookCard} className={style.BookCard}>
+            <div className={style.BookCardImage}>
+                <img  src={result.volumeInfo.imageLinks.thumbnail}/>
             </div>
-        )
+            
+            <div className={style.BookCardDetails}>
+                <p className={style.BookCardDetails_title}>{result.volumeInfo.title}</p>
 
-            //This is used to catch the error from API
-            // Some book doesn't have image
-    }catch(err) {
-        <div
-        onClick={onClickBookCard} className={style.BookCard}>
-                <img src=''/>
-                <div>
-                <p>{result.volumeInfo.title}</p>
-                <p>{result.volumeInfo.authors}</p>
-                <p>{result.volumeInfo.description}</p>
-                </div>
+                <p className={style.BookCardDetails_authors}>
+                    {() => {return result.volumeInfo.authors && result.volumeInfo.authors.join(", ")}}
+                </p>
                 
+                <p className={style.BookCardDetails_description}>{result.volumeInfo.description}</p>
             </div>
-    }
-
-    
+            
+        </div>
+    )    
 };
     
 

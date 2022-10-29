@@ -33,13 +33,16 @@
     
     // Short details of the card
     &Details{
-        height: 50%;
         &_title{
             font-weight: bolder;
         }
 
         &_authors{
             font-style: italic;
+            display: -webkit-box;
+            -webkit-line-clamp: 1;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
         }
 
         &_description {

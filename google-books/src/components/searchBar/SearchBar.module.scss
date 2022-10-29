@@ -1,5 +1,5 @@
 @use '../../modules/mixins';
-@use '../../modules/ColorPalette';
+@use '../../modules/ColorPalette' as Color;
 @use '../../modules/variable';
 
 .SearchBar {
@@ -24,7 +24,7 @@
         &:focus-within {
             box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
             transition: all .25s ease-in-out; 
-            background-color: #2093d5;
+            background-color: Color.$blue;
             
         }
         &Input {

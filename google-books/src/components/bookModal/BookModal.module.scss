@@ -1,3 +1,114 @@
+@use '../../modules/mixins';
+@use '../../modules/ColorPalette' as Color;
+@use '../../modules/variable';
+
 .BookModal {
-    display: none;
+    // This is to make sure the modal is at the center of the screen
+    position: fixed;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    overflow: auto;
+    background-color:  rgba(0, 0, 0, 0.876);
+    color: white;
+    overflow: auto;
+    
+    transition: width 0.5s ease, 
+              height 0.5s ease 0.5s;
+    
+
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+
+    @include mixins.Flexbox_BoxSizing;
+    flex-direction: column;
+    padding: 5px;
+    font-size: 1.5em;
+
+    
+     
+    &Nav {
+        @include mixins.Flexbox_BoxSizing;
+        justify-content: flex-end;
+        width: 100%;
+        padding: 0 10px;
+        &_button {
+            font-size: 3em;
+
+            /* Avoid user highlight the close button*/
+            -webkit-touch-callout: none; /* iOS Safari */
+            -webkit-user-select: none; /* Safari */
+             -khtml-user-select: none; /* Konqueror HTML */
+               -moz-user-select: none; /* Old versions of Firefox */
+                -ms-user-select: none; /* Internet Explorer/Edge */
+                    user-select: none; /* Non-prefixed version, currently
+                                          supported by Chrome, Edge, Opera and Firefox */
+
+            &:hover{
+                color: Color.$red;
+            }
+        }
+    }
+
+    &Container{
+        @include mixins.Flexbox_BoxSizing;
+        @media screen and (max-width: 1279px){
+            flex-direction: column;
+        }
+        justify-content: center;
+        gap: 10px;
+        margin-bottom: 20px;
+        &Image {
+            @media screen and (max-width: 1279px){
+                //height: 100%;
+                width: 100%;
+            }
+
+            @media screen and (min-width: 1280px){
+                height: 100%;
+            }
+
+            @include mixins.Flexbox_BoxSizing;
+            justify-content: center;
+            margin: 10px;
+            & img {
+                width: 10em;
+                height: fit-content;
+            }
+        }
+
+        &Info {
+            @media screen and (max-width: 1279px){
+                width: 100%;
+            }
+
+            @media screen and (min-width: 1280px){
+                height: 100%;
+                width: 40%;
+            }
+
+            &_title {
+                font-weight: bold;
+                font-size: 1.3em;
+                margin-bottom: 5px;
+            }
+
+            &_authors {
+                font-style: italic;
+                margin-bottom: 5px;
+            }
+
+            &_item {
+                margin-bottom: 5px;
+
+                &_title {
+                    font-weight: bold;
+                }
+            }
+
+        }
+    }
+
 }

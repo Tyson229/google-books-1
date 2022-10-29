@@ -1,8 +1,9 @@
 import style from "./BookCard.module.scss"
 import BookModal from "../bookModal/BookModal";
-const BookCard = ({result}) => {
+const BookCard = ({result, handle, setOpenModal}) => {
     const onClickBookCard = () => {
-        BookModal(result)
+        handle(result);
+        setOpenModal(true);
     }
     try{
         return (
@@ -13,7 +14,9 @@ const BookCard = ({result}) => {
                 
                 <div className={style.BookCardDetails}>
                     <p className={style.BookCardDetails_title}>{result.volumeInfo.title}</p>
+
                     <p className={style.BookCardDetails_authors}>{result.volumeInfo.authors.join(", ")}</p>
+                    
                     <p className={style.BookCardDetails_description}>{result.volumeInfo.description}</p>
                 </div>
                 

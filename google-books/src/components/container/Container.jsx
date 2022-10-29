@@ -6,7 +6,7 @@ import { useEffect } from "react"
 import BookModal from "../bookModal/BookModal.jsx"
 
 
-const Container = ({query}) => {
+const Container = ({query, handle, setOpenModal}) => {
     // Create an empty array ready to store books
     const [results, setResults] = useState([]); 
     
@@ -21,7 +21,8 @@ const Container = ({query}) => {
             <div className={style.Container}>
             {
                 results.map((book) => {
-                    return  <BookCard key={book.id}  result={book} />})        
+                    return ( <BookCard key={book.id}  result={book} handle={handle} setOpenModal={setOpenModal}/>
+                    )})        
             }           
             </div>
         )

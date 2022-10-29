@@ -1,57 +1,63 @@
 @use '../../modules/mixins';
-@use '../../modules/ColorPalette';
+@use '../../modules/ColorPalette' as Color;
 @use '../../modules/variable';
 
 .BookCard {
-    @include mixins.Flexbox;
-    flex-direction: column;
-    max-width: 400px;
-    max-height: 400px;
-    width: 50%;
-    height: 100%;
-    margin: 0 10px;
-    //background-color: blue;
-    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+    @include mixins.Flexbox_BoxSizing;
 
-    &Image {
-
+    @media screen and (min-width: 940px) {
+        width: 30%;
+        height: 30vh;
+        max-width: 400px;
+        max-height: 300px;
+        margin: 10px;
     }
+    @media screen and (max-width: 939px) {
+        width: 95%;
+        margin: 5px 0;
+        height: 30%;
+    }
+    border-radius: 5px;
+    padding: 10px;
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+    
 
+    // Image part of the card
+    &Image {
+        @include mixins.Flexbox_BoxSizing;
+        padding: 5px;
+        margin: 5px;
+        height: 100%;
+    }
+    
+    // Short details of the card
     &Details{
-        width: 100%;
+        height: 50%;
         &_title{
-            font-weight: bold;
+            font-weight: bolder;
         }
 
         &_authors{
             font-style: italic;
-            font-weight: lighter;
         }
 
         &_description {
-            white-space: nowrap;
+            margin-top: 10px;
+            opacity: 0.7;
+            text-align: justify;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
             overflow: hidden;
-            text-overflow: ellipsis;
-        }
+        }   
     }
-}
 
-.title {
-    font-weight: bold;
-    font-size: 1.5em;
-}
-
-.author {
-    
-}
-
-.description {
-    // display: -webkit-box;
-    // -webkit-line-clamp: 2;
-    // -webkit-box-orient: vertical;
-    // overflow: hidden;
-    display: block;
-    max-height: 3.6em;
-    line-height: 1.7em;
-    overflow: hidden;
+    &:hover {
+        background-color: Color.$dark;
+        box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+        transition: all .25s ease-in-out; 
+        color: white;
+        transform: scale(1.1);
+    }
 }

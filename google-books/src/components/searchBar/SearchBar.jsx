@@ -2,9 +2,9 @@ import { useState } from "react"
 import style from "./SearchBar.module.scss"
 import searchImage from './search.png';
 
-const SearchBar = ({onSearch}) => {
+const SearchBar = ({onSearch, startLoading}) => {
     const [term, setTerm] = useState('');
-
+    const [previousTerm, setPreviousTerm] = useState('')
     // When input is changed, update the term
     const onInputChange = (event) => {
         setTerm(event.target.value);
@@ -14,6 +14,10 @@ const SearchBar = ({onSearch}) => {
     const onFormSubmit = (event) => {
         event.preventDefault();
         onSearch(term);
+        setPreviousTerm(term)
+        if(term && term != previousTerm)
+        startLoading();
+        
     }
 
     return (

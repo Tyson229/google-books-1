@@ -6,6 +6,20 @@ const BookModal = ({book, closeModal}) => {
         closeModal(false);
     }
 
+    // Make sure result exists
+    let image = '';
+    if (book.volumeInfo.imageLinks)
+        image = book.volumeInfo.imageLinks.thumbnail;
+
+    let authors = [];
+    if (book.volumeInfo.authors) {
+        authors  = book.volumeInfo.authors;
+    }
+
+    let categories = [];
+    if (book.volumeInfo.categories) {
+        categories = book.volumeInfo.categories;
+    }
     return (
         <div className={style.BookModal}>
             {/* Close Button */}
@@ -17,7 +31,7 @@ const BookModal = ({book, closeModal}) => {
             <div className={style.BookModalContainer}>
                 {/* Books thumbnail */}
                 <div className={style.BookModalContainerImage}>
-                    <img src={book.volumeInfo.imageLinks.thumbnail}/>
+                    <img src={image}/>
                 </div>
                 {/* Books info */}
                 <div className={style.BookModalContainerInfo}>
@@ -26,9 +40,7 @@ const BookModal = ({book, closeModal}) => {
                     </p>
                     
                     <p className={style.BookModalContainerInfo_authors}>
-                        {() => {
-                                return book.volumeInfo.authors && book.volumeInfo.authors.join(', ')
-                            }}
+                        {authors.join(', ')}
                     </p>
                     
                     <div className={style.BookModalContainerInfo_item}>
@@ -43,7 +55,7 @@ const BookModal = ({book, closeModal}) => {
 
                     <div className={style.BookModalContainerInfo_item}>
                         <p className={style.BookModalContainerInfo_item_title}>Categories:</p> 
-                        {book.volumeInfo.categories.join(' - ')}
+                        {categories.join(' - ')}
                     </div>
 
                     <div className={style.BookModalContainerInfo_item}>
